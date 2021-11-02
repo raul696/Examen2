@@ -3,6 +3,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * clase principal en es controla el game i es criden a altres funcions
+ * @author Raul
+ * @version v0.2
+ */
 public class Game {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE = "\u001B[34m";
@@ -18,22 +23,35 @@ public class Game {
     //definició de les puntuacions als primers 3 classificats
     private int[] puntuacions = {10,8,5};
 
+    /**
+     * clase ResultatsCursa que te el temps i el vehicle
+     */
     class ResultatsCursa {
         double temps;
         Vehicle vehicle;
     }
 
+    /**
+     * asigna els objectes ConfigGame i Menu
+     */
     public Game() {
         config = new ConfigGame();
         menu = new Menu(this,config);
     }
 
+    /**
+     * crida a la funcio menuPrincipal de Menu
+     */
     public void start() {
         menu.menuPrincipal();
     }
 
+    /**
+     * TODO: 02/11/2021  refactoritzar i modular el mètode play
+     * Funcio per inicia el joc
+     * @param tipus
+     */
     public void play(int tipus)  {
-        //pendent per fer: refactoritzar i modular el mètode play
         System.out.println(config);
 
         //crear participant usuari i resta de participants
@@ -77,7 +95,11 @@ public class Game {
 
     }
 
-    //pendent per fer: refactoritzar el codi repetit
+    /**
+     * TODO: 02/11/2021 refactoritzar el codi repetit
+     * funcio per introduir participants
+     * @param tipus
+     */
     private void addParticipants(int tipus) {
 
         switch (tipus) {
@@ -98,6 +120,9 @@ public class Game {
         }
     }
 
+    /**
+     * funcio per mostrar el Resultats finals
+     */
     public void finalResults() {
         //ordenar per punts
         resultatsCursa.sort((o1, o2) -> (int) (o2.vehicle.getPilot().getPunts() - o1.vehicle.getPilot().getPunts()));
@@ -110,10 +135,16 @@ public class Game {
         System.out.println();
     }
 
+    /**
+     * funcio per eliminar els resultats
+     */
     public void initResults() {
         resultatsCursa.clear();
     }
 
+    /**
+     * funcio per crear els participants
+     */
     private void setParticipants() {
         participants[0].setPilot(new Pilot(config.getUserName()));
         resul.vehicle = participants[0];
@@ -127,8 +158,12 @@ public class Game {
         }
     }
 
+    /**
+     * funcio per eliminar el ultim clasificat
+     * TODO: 02/11/2021
+     */
     private void eliminarDarrerClassificat() {
-      //pendent  
+
     }
 
 

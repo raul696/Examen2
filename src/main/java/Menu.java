@@ -1,17 +1,30 @@
 import java.util.Scanner;
 
+/**
+ * aquesta clase serveix mer mostrar un meni i seleccionar una opcio
+ * @author Raul
+ * @version v0.2
+ */
 public class Menu {
     private Scanner in = new Scanner(System.in);
     private int opcio;
     ConfigGame configGame;
     Game game;
 
+    /**
+     * constructor del menu
+     * @param game
+     * @param config
+     */
     public Menu(Game game, ConfigGame config) {
         opcio = -1;
         this.game = game;
         configGame = config;
     }
 
+    /**
+     * funcio per mostrar el menu i seleccionar un opcio
+     */
     public void menuPrincipal() {
         do {
             System.out.println("1. Configuració : " + configGame);
@@ -42,6 +55,9 @@ public class Menu {
         }while(opcio != 0);
     }
 
+    /**
+     * funcio per canviar els parametres de la configuracio
+     */
     public void setConfig() {
         System.out.println("Entra el teu nom: ");
         String n = in.nextLine();
@@ -54,6 +70,9 @@ public class Menu {
         in.nextLine();
     }
 
+    /**
+     * funcio per seleccionar que vheicle sutilitza
+     */
     public void play() {
         System.out.println("Amb quin vehicle vols fer el campionat?");
         System.out.println("1) Bicicletes");
